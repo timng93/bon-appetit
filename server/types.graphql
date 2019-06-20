@@ -5,7 +5,7 @@ type User @model {
   id: ID! @isUnique
   username: String!
   email: String!
-  recipes: [Recipe!]! @relation(name: "Recipe")
+  recipes: [Recipe] @relation(name: "Recipe")
   favoriteRecipes: [Recipe] @relation(name: "Favorite Recipes")
 }
 
@@ -16,4 +16,11 @@ type Recipe @model {
   title: String
   description: String
   created: DateTime
+  tags: [Tag] @relation(name: "Tag")
+}
+
+type Tag @model {
+  id: ID! @isUnique
+  name: string!
+  recipes: [Recipe] @relation(name: "Tag")
 }
