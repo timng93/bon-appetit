@@ -6,14 +6,21 @@ type User @model {
   username: String!
   email: String!
   recipes: [Recipe!]! @relation(name: "Recipe")
-  favoriteRecipes: [Recipe] @relation(name: "Favorite Recipes")
+  favoriteRecipes: [Recipe!]! @relation(name: "FavoriteRecipes")
 }
 
 type Recipe @model {
   id: ID! @isUnique
   user: User @relation(name: "Recipe")
-  users: [User] @relation(name: "Favorite Recipes")
+  users: [User!]! @relation(name: "FavoriteRecipes")
   title: String
   description: String
   created: DateTime
+  tags: [Tag!]! @relation(name: "Tag")
+}
+
+type Tag @model {
+  id: ID! @isUnique
+  name: String!
+  recipes: [Recipe!]! @relation(name: "Tag")
 }
