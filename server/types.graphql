@@ -2,9 +2,13 @@
 # based on which the GraphQL API is generated
 
 type User @model {
-  id: ID! @isUnique
-  username: String!
-  email: String!
+  # Required system field:
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  email: String! @isUnique
+  password: String!
   recipes: [Recipe!]! @relation(name: "Recipe")
   favoriteRecipes: [Recipe!]! @relation(name: "FavoriteRecipes")
 }
@@ -24,3 +28,5 @@ type Tag @model {
   name: String!
   recipes: [Recipe!]! @relation(name: "Tag")
 }
+
+#
