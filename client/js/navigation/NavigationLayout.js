@@ -3,14 +3,9 @@ import {
   createBottomTabNavigator
 } from 'react-navigation';
 
-import HomeScreen from '../screens/Home';
 import DiscoverScreen from '../screens/Discover';
 import ShareScreen from '../screens/Share';
 import ProfileScreen from '../screens/Profile';
-
-const HomeStack = createStackNavigator({
-  Home: HomeScreen
-});
 
 const DiscoverStack = createStackNavigator({
   Discover: DiscoverScreen
@@ -26,7 +21,6 @@ const ProfileStack = createStackNavigator({
 
 export default createBottomTabNavigator(
   {
-    Home: HomeStack,
     Discover: DiscoverStack,
     Share: ShareStack,
     Profile: ProfileStack
