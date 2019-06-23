@@ -6,7 +6,7 @@ import styles from './styles';
 export default () => {
   return (
     <View style={styles.container}>
-      <Text>This is the Profile Screen!</Text>
+      <Text>Share a recipe!</Text>
     </View>
   );
 };

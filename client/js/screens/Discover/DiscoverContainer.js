@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Home from './Discover';
+import Discover from './Discover';
 
 export default class DiscoverContainer extends Component {
   render() {

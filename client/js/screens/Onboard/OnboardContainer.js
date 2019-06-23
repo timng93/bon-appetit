@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Home from './Onboard';
+import Onboard from './Onboard';
 
 export default class OnboardContainer extends Component {
   render() {

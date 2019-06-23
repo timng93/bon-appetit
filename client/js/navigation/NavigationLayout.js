@@ -1,9 +1,23 @@
-import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
-import HomeScreen from "../screens/Home";
-import ProfileScreen from "../screens/Profile";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from 'react-navigation';
+
+import HomeScreen from '../screens/Home';
+import DiscoverScreen from '../screens/Discover';
+import ShareScreen from '../screens/Share';
+import ProfileScreen from '../screens/Profile';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
+});
+
+const DiscoverStack = createStackNavigator({
+  Discover: DiscoverScreen
+});
+
+const ShareStack = createStackNavigator({
+  Share: ShareScreen
 });
 
 const ProfileStack = createStackNavigator({
@@ -13,19 +27,21 @@ const ProfileStack = createStackNavigator({
 export default createBottomTabNavigator(
   {
     Home: HomeStack,
+    Discover: DiscoverStack,
+    Share: ShareStack,
     Profile: ProfileStack
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: ({ navigation }) => ({
       tabBarOptions: {
-        activeTintColor: "#000000",
-        inactiveTintColor: "#000000",
+        activeTintColor: '#000000',
+        inactiveTintColor: '#000000',
         labelStyle: {
           fontSize: 10
         },
         style: {
-          backgroundColor: "#ffffff",
-          color: "red"
+          backgroundColor: '#ffffff',
+          color: 'red'
         }
       }
     })
