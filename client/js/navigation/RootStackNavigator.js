@@ -2,15 +2,17 @@ import {
   createStackNavigator,
   createSwitchNavigator,
   createAppContainer
-} from "react-navigation";
-import NavigationLayout from "./NavigationLayout";
+} from 'react-navigation';
+
+import NavigationLayout from './NavigationLayout';
+
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout
   },
   {
-    mode: "modal",
-    headerMode: "none"
+    mode: 'modal',
+    headerMode: 'none'
   }
 );
 
@@ -20,7 +22,7 @@ export default createAppContainer(
       App: AppStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: 'App'
     }
   )
 );
