@@ -6,7 +6,7 @@ import styles from './styles';
 export default () => {
   return (
     <View style={styles.container}>
-      <Text>Welcome to Bon Appetit!</Text>
+      <Text>Discover new recipes!</Text>
     </View>
   );
 };
