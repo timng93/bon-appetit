@@ -3,29 +3,6 @@ import { View, Text, FlatList } from 'react-native';
 
 import styles from './styles';
 
-// const recipes = [
-//   {
-//     title: 'chicken teriyaki',
-//     description: 'chicken with teriyaki sauce',
-//     tags: [popular, chicken, japanese]
-//   },
-//   {
-//     title: 'salmon teriyaki',
-//     description: 'salmon with teriyaki sauce',
-//     tags: [salmon, japanese]
-//   },
-//   {
-//     title: 'tofu teriyaki',
-//     description: 'tofu with teriyaki sauce',
-//     tags: [tofu, japanese]
-//   },
-//   {
-//     title: 'beef teriyaki',
-//     description: 'beef with teriyaki sauce',
-//     tags: [beef, japanese]
-//   }
-// ];
-
 export default () => {
   return (
     <View style={styles.container}>
@@ -76,10 +53,11 @@ export default () => {
         ]}
         renderItem={({ item }) => (
           <View style={styles.recipeWrapper}>
+            <Text>{item.description}</Text>
             <Text>{item.title}</Text>
+            <Text>{item.tags.join(', ')}</Text>
           </View>
         )}
-        // contentContainerStyle={styles.recipeList}
         keyExtractor={item => item.title}
         numColumns={2}
       />
