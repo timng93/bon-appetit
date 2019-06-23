@@ -1,3 +1,3 @@
-import DiscoverContainer from './DiscoverContainer';
+import ShareContainer from './ShareContainer';
 
-export default DiscoverContainer;
+export default ShareContainer;

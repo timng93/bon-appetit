@@ -7,7 +7,7 @@ export const dimensions = {
 
 // Colours
 export const colors = {
-  neutralLight: '#fffcfc', // light grey
+  neutralLight: '#f7ebec', // light grey
   neutralDark: '#404e5c', // med grey
   primary: '#e3170a', // red
   primaryLight: '#ff5a39',
@@ -58,6 +58,35 @@ export const uppercase = { textTransform: 'uppercase' };
 
 // layout
 export const center = { justifyContent: 'center', alignItems: 'center' };
+
+export const row = { flexDirection: 'row' };
+
+export const jusBtwn = { justifyContent: 'space-between' };
+
+export const jusArnd = { justifyContent: 'space-around' };
+
+export const jusStrt = { justifyContent: 'flex-start' };
+
+export const jusCntr = { justifyContent: 'center' };
+
+export const jusCenterRow = {
+  ...row,
+  ...jusCntr
+};
+
+export const jusBtwnRow = {
+  ...row,
+  ...jusBtwn
+};
+
+export const iteCntr = { alignItems: 'center' };
+
+export const iteStrt = { alignItems: 'flex-start' };
+
+export const iteCenterRow = {
+  ...row,
+  ...iteCntr
+};
 
 export const container = {
   backgroundColor: colors.neutralLight,
