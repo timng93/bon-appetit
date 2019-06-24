@@ -5,11 +5,8 @@ export const ALL_RECIPES_QUERY = gql`
       id
       title
       description
-      recipePicture
-      rating
-      numberOfReviews
-      created
       tags {
+        id
         name
       }
     }
