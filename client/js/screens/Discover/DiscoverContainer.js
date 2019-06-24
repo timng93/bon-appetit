@@ -1,9 +1,19 @@
-import React, { Component } from 'react';
-
-import Discover from './Discover';
+import React, {Component} from "react";
+import {Query} from "react-apollo";
+import {ALL_RECIPES_QUERY} from "../../apollo/queries";
+import Loader from "../../components/Loader";
+import Discover from "./Discover";
 
 export default class DiscoverContainer extends Component {
   render() {
-    return <Discover />;
+    return (
+      <Query query={ALL_RECIPES_QUERY}>
+        {({loading, error, data}) => {
+          if (loading) return <Loader />;
+          if (error) return console.log(error);
+          return <Discover recipes={data.allRecipes} />;
+        }}
+      </Query>
+    );
   }
 }
