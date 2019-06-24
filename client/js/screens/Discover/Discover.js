@@ -1,10 +1,12 @@
 import React from "react";
-import {View, Text, FlatList} from "react-native";
+import {View, Text, Image, FlatList} from "react-native";
 
 import styles from "./styles";
 
-export default ({recipes}) => {
+export default ({recipes, images}) => {
   console.log(recipes);
+  console.log(images);
+
   return (
     <View style={styles.container}>
       <Text>Discover new recipes!</Text>
@@ -57,6 +59,7 @@ export default ({recipes}) => {
           <View style={styles.recipeWrapper}>
             {/* <Text>{item.description}</Text> */}
             <Text>{item.title}</Text>
+            <Image style={styles.image} source={images[item.title]} />
             {item.tags.map(tag => (
               <Text key={tag.id}>{tag.name}</Text>
             ))}

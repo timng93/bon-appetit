@@ -4,6 +4,10 @@ import {ALL_RECIPES_QUERY} from "../../apollo/queries";
 import Loader from "../../components/Loader";
 import Discover from "./Discover";
 
+const recipeImages = {
+  "Vietnamese Egg Rolls": require("../../assets/images/Recipes/spring-rolls.jpg")
+};
+
 export default class DiscoverContainer extends Component {
   render() {
     return (
@@ -11,7 +15,7 @@ export default class DiscoverContainer extends Component {
         {({loading, error, data}) => {
           if (loading) return <Loader />;
           if (error) return console.log(error);
-          return <Discover recipes={data.allRecipes} />;
+          return <Discover recipes={data.allRecipes} images={recipeImages} />;
         }}
       </Query>
     );
