@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryText,
     borderRadius: 20,
     ...jusBtwn
+  },
+  image: {
+    width: 80,
+    height: 80
   }
 });
 
