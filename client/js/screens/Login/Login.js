@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, Button} from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
-import {graphql} from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
