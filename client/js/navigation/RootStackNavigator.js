@@ -2,27 +2,31 @@ import {
   createStackNavigator,
   createSwitchNavigator,
   createAppContainer
-} from 'react-navigation';
-
-import NavigationLayout from './NavigationLayout';
+} from "react-navigation";
+import AuthLoading from "../../js/components/AuthLoading";
+import Login from "../../js/screens/Login";
+import NavigationLayout from "./NavigationLayout";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout
   },
   {
-    mode: 'modal',
-    headerMode: 'none'
+    mode: "modal",
+    headerMode: "none"
   }
 );
 
+const AuthStack = createStackNavigator({Login: Login});
 export default createAppContainer(
   createSwitchNavigator(
     {
-      App: AppStack
+      AuthLoading: AuthLoading,
+      App: AppStack,
+      Auth: AuthStack
     },
     {
-      initialRouteName: 'App'
+      initialRouteName: "AuthLoading"
     }
   )
 );
