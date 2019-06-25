@@ -1,19 +1,13 @@
-import React from "react";
-import {View, Text, Button} from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+import React, {Fragment} from "react";
+import {View, Button, TextInput, Text, TouchableOpacity} from "react-native";
+import {withNavigation} from "react-navigation";
+import PropTypes from "prop-types";
 import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
-import PropTypes from "prop-types";
-import styles from "./styles";
+import {setUserToken} from "../../config/models";
+import {Form, Field} from "react-final-form";
 
-const signupMutation = gql`
-  mutation($email: String!, $password: String!) {
-    signupUser(email: $email, password: $password) {
-      id
-      token
-    }
-  }
-`;
+import styles from "./styles";
 
 const loginMutation = gql`
   mutation($email: String!, $password: String!) {
@@ -32,21 +26,58 @@ class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is Login.</Text>
-        <Button title="Sign in!" onPress={this._signInAsync} />
+        <Text>This is the Login page.</Text>
+        <Form
+          onSubmit={this.onSubmit}
+          render={({handleSubmit}) => (
+            <Fragment>
+              <Field name="email">
+                {({input, meta}) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Field name="password">
+                {({input, meta}) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Button title="Sign in!" onPress={handleSubmit} />
+            </Fragment>
+          )}
+        />
       </View>
     );
   }
 
-  _signInAsync = async () => {
-    await AsyncStorage.setItem("userToken", "abc");
-    this.props.navigation.navigate("App");
+  onSubmit = async values => {
+    try {
+      const {email, password} = values;
+      const result = await this.props.loginMutation({
+        variables: {email, password}
+      });
+      const userInfo = result.data.authenticateUser;
+      await setUserToken(userInfo.id, userInfo.token);
+      this.props.navigation.navigate("App");
+    } catch (e) {
+      console.log(e);
+    }
   };
 }
 
 Login.propTypes = {};
 
 export default compose(
-  graphql(signupMutation, {name: "signupMutation"}),
-  graphql(loginMutation, {name: "loginMutation"})
+  graphql(loginMutation, {name: "loginMutation"}),
+  withNavigation
 )(Login);
