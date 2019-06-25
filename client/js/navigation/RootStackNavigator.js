@@ -3,7 +3,7 @@ import {
   createSwitchNavigator,
   createAppContainer
 } from "react-navigation";
-import AuthLoadingScreen from "../../js/components/AuthLoading/AuthLoading";
+import AuthLoading from "../../js/components/AuthLoading";
 import LoginScreen from "../../js/screens/Login";
 
 import NavigationLayout from "./NavigationLayout";
@@ -22,7 +22,7 @@ const AuthStack = createStackNavigator({Login: LoginScreen});
 export default createAppContainer(
   createSwitchNavigator(
     {
-      AuthLoading: AuthLoadingScreen,
+      AuthLoading: AuthLoading,
       App: AppStack,
       Auth: AuthStack
     },

@@ -18,7 +18,7 @@ const AUTHENTICATE_USER = gql`
   }
 `;
 
-class LogIn extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {text: "", loading: false};
@@ -50,12 +50,9 @@ class LogIn extends Component {
               const result = await this.props.loginMutation({
                 variables: {email: value.email, password: value.password}
               });
-
               const user = result.data.authenticateUser;
-
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
-
               console.log("In Login - Before navigate to Activities");
               this.setState({loading: false});
               this.props.navigation.navigate("Discover");
@@ -136,11 +133,11 @@ class LogIn extends Component {
     );
   }
 }
-LogIn.propTypes = {
+Login.propTypes = {
   loginMutation: PropTypes.func.isRequired,
   navigation: PropTypes.object.isRequired
 };
 
 export default compose(graphql(AUTHENTICATE_USER, {name: "loginMutation"}))(
-  LogIn
+  Login
 );
