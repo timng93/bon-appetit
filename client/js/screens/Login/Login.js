@@ -20,7 +20,7 @@ const loginMutation = gql`
 
 class Login extends React.Component {
   static navigationOptions = {
-    title: "Please sign in"
+    title: "Please sign in the app"
   };
 
   render() {
