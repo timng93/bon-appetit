@@ -1,10 +1,22 @@
-import React from "react";
-import {View, Text, Button} from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
-
+import React, {Fragment} from "react";
+import {View, Button, Text, TextInput, TouchableOpacity} from "react-native";
+import {withNavigation} from "react-navigation";
 import PropTypes from "prop-types";
+import {graphql, compose} from "react-apollo";
+import gql from "graphql-tag";
+import {setUserToken} from "../../config/models";
+import {Form, Field} from "react-final-form";
 
 import styles from "./styles";
+
+const loginMutation = gql`
+  mutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      id
+      token
+    }
+  }
+`;
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -15,17 +27,57 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text>This is Login.</Text>
-        <Button title="Sign in!" onPress={this._signInAsync} />
+        <Form
+          onSubmit={this.onSubmit}
+          render={({handleSubmit}) => (
+            <Fragment>
+              <Field name="email">
+                {({input, meta}) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Field name="password">
+                {({input, meta}) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Button title="Sign in!" onPress={handleSubmit} />
+            </Fragment>
+          )}
+        />
       </View>
     );
   }
 
-  _signInAsync = async () => {
-    await AsyncStorage.setItem("userToken", "abc");
-    this.props.navigation.navigate("App");
+  onSubmit = async values => {
+    try {
+      const {email, password} = values;
+      const result = await this.props.loginMutation({
+        variables: {email, password}
+      });
+      const userInfo = result.data.authenticateUser;
+      await setUserToken(userInfo.id, userInfo.token);
+      this.props.navigation.navigate("App");
+    } catch (e) {
+      console.log(e);
+    }
   };
 }
 
 Login.propTypes = {};
 
-export default Login;
+export default compose(
+  graphql(loginMutation, {name: "loginMutation"}),
+  withNavigation
+)(Login);
