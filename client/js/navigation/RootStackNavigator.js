@@ -4,8 +4,7 @@ import {
   createAppContainer
 } from "react-navigation";
 import AuthLoading from "../../js/components/AuthLoading";
-import LoginScreen from "../../js/screens/Login";
-
+import Login from "../../js/screens/Login";
 import NavigationLayout from "./NavigationLayout";
 
 const AppStack = createStackNavigator(
@@ -18,7 +17,7 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createStackNavigator({Login: LoginScreen});
+const AuthStack = createStackNavigator({Login: Login});
 export default createAppContainer(
   createSwitchNavigator(
     {
