@@ -1,4 +1,3 @@
-// TODO: Add model functions to handle AsyncStorage
 // TODO: Set up basic login with fixed credentials
 
 import AsyncStorage from '@react-native-community/async-storage';
