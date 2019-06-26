@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from "react";
 
-import Profile from './Profile';
+import Profile from "./Profile";
 
 export default class ProfileContainer extends Component {
   render() {
-    return <Profile />;
+    return <Profile navigation={this.props.navigation} />;
   }
 }
