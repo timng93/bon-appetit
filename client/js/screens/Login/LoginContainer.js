@@ -1,7 +1,15 @@
 import React, {Component} from "react";
+
 import Login from "./Login";
-export default class LoginContainer extends Component {
+
+class LoginContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    return <Login navigation={this.props.navigation} />;
+    return <Login />;
   }
 }
+
+export default LoginContainer;
