@@ -16,7 +16,12 @@ export default ({recipes, images, navigation}) => {
         renderItem={({item}) => (
           <View style={styles.recipeWrapper}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("RecipeModal")}
+              onPress={() =>
+                navigation.navigate("RecipeModal", {
+                  recipe: item,
+                  image: images
+                })
+              }
             >
               <Text>{item.title}</Text>
               <Image style={styles.image} source={images[item.title]} />

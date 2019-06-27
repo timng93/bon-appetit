@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     ...body2,
     color: colors.white,
     textAlign: "center"
+  },
+  image: {
+    width: 150,
+    height: 150
   }
 });
 
