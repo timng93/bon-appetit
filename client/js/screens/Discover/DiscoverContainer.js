@@ -15,7 +15,13 @@ export default class DiscoverContainer extends Component {
         {({loading, error, data}) => {
           if (loading) return <Loader />;
           if (error) return console.log(error);
-          return <Discover recipes={data.allRecipes} images={recipeImages} />;
+          return (
+            <Discover
+              recipes={data.allRecipes}
+              images={recipeImages}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );

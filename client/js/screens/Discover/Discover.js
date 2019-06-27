@@ -1,9 +1,9 @@
 import React from "react";
-import {View, Text, Image, FlatList} from "react-native";
+import {View, Text, Image, FlatList, TouchableOpacity} from "react-native";
 
 import styles from "./styles";
 
-export default ({recipes, images}) => {
+export default ({recipes, images, navigation}) => {
   console.log(recipes);
   console.log(images);
 
@@ -13,57 +13,22 @@ export default ({recipes, images}) => {
 
       <FlatList
         data={recipes}
-        // data={[
-        //   {
-        //     title: "chicken teriyaki",
-        //     description: "chicken with teriyaki sauce",
-        //     tags: ["popular", "chicken", "japanese"]
-        //   },
-        //   {
-        //     title: "salmon teriyaki",
-        //     description: "salmon with teriyaki sauce",
-        //     tags: ["salmon", "japanese"]
-        //   },
-        //   {
-        //     title: "tofu teriyaki",
-        //     description: "tofu with teriyaki sauce",
-        //     tags: ["tofu", "japanese"]
-        //   },
-        //   {
-        //     title: "beef teriyaki",
-        //     description: "beef with teriyaki sauce",
-        //     tags: ["beef", "japanese"]
-        //   },
-        //   {
-        //     title: "chicken teriyaki 2",
-        //     description: "chicken with teriyaki sauce",
-        //     tags: ["popular", "chicken", "japanese"]
-        //   },
-        //   {
-        //     title: "salmon teriyaki 2",
-        //     description: "salmon with teriyaki sauce",
-        //     tags: ["salmon", "japanese"]
-        //   },
-        //   {
-        //     title: "tofu teriyaki 2",
-        //     description: "tofu with teriyaki sauce",
-        //     tags: ["tofu", "japanese"]
-        //   },
-        //   {
-        //     title: "beef teriyaki 2",
-        //     description: "beef with teriyaki sauce",
-        //     tags: ["beef", "japanese"]
-        //   }
-        // ]}
         renderItem={({item}) => (
           <View style={styles.recipeWrapper}>
-            {/* <Text>{item.description}</Text> */}
-            <Text>{item.title}</Text>
-            <Image style={styles.image} source={images[item.title]} />
-            {item.tags.map(tag => (
-              <Text key={tag.id}>{tag.name}</Text>
-            ))}
-            {/* <Text>{item.tags.join(", ")}</Text> */}
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("RecipeModal", {
+                  recipe: item,
+                  image: images
+                })
+              }
+            >
+              <Text>{item.title}</Text>
+              <Image style={styles.image} source={images[item.title]} />
+              {item.tags.map(tag => (
+                <Text key={tag.id}>{tag.name}</Text>
+              ))}
+            </TouchableOpacity>
           </View>
         )}
         keyExtractor={item => item.title}
