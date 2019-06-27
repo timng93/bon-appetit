@@ -6,10 +6,12 @@ import {
 import AuthLoading from "../../js/components/AuthLoading";
 import Login from "../../js/screens/Login";
 import NavigationLayout from "./NavigationLayout";
+import RecipeModal from "../components/RecipeModal";
 
 const AppStack = createStackNavigator(
   {
-    Layout: NavigationLayout
+    Layout: NavigationLayout,
+    RecipeModal: RecipeModal
   },
   {
     mode: "modal",
