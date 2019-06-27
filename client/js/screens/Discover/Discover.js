@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, Image, FlatList, Button} from "react-native";
+import {View, Text, Image, FlatList, TouchableOpacity} from "react-native";
 
 import styles from "./styles";
 
@@ -15,16 +15,15 @@ export default ({recipes, images, navigation}) => {
         data={recipes}
         renderItem={({item}) => (
           <View style={styles.recipeWrapper}>
-            <Text>{item.title}</Text>
-            <Image style={styles.image} source={images[item.title]} />
-            {item.tags.map(tag => (
-              <Text key={tag.id}>{tag.name}</Text>
-            ))}
-            <Button
+            <TouchableOpacity
               onPress={() => navigation.navigate("RecipeModal")}
-              title="Info"
-              color="#fff"
-            />
+            >
+              <Text>{item.title}</Text>
+              <Image style={styles.image} source={images[item.title]} />
+              {item.tags.map(tag => (
+                <Text key={tag.id}>{tag.name}</Text>
+              ))}
+            </TouchableOpacity>
           </View>
         )}
         keyExtractor={item => item.title}
