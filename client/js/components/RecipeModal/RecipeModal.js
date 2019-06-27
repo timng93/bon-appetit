@@ -7,9 +7,11 @@ import styles from "./styles";
 const RecipeModal = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <View style={styles.flex}>
-        <Button onPress={() => navigation.goBack()} title="Dismiss" />
-        <Text style={styles.title}>This is the recipe modal</Text>
+      <View style={styles.close}>
+        <View style={styles.flex}>
+          <Button onPress={() => navigation.goBack()} title="Dismiss" />
+          <Text style={styles.title}>This is the recipe modal</Text>
+        </View>
       </View>
     </View>
   );
