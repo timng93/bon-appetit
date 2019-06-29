@@ -4,10 +4,6 @@ import {withNavigation} from "react-navigation";
 import PropTypes from "prop-types";
 import styles from "./styles";
 
-// const recipeImages = {
-//   "Vietnamese Egg Rolls": require("../../assets/images/Recipes/spring-rolls.jpg")
-// };
-
 const RecipeModal = ({navigation}) => {
   const recipe = navigation.getParam("recipe");
   const image = navigation.getParam("image");
@@ -21,6 +17,10 @@ const RecipeModal = ({navigation}) => {
           <Text style={styles.title}>{recipe.title}</Text>
           <Image style={styles.image} source={image[recipe.title]} />
           <Text style={styles.title}>{recipe.description}</Text>
+          <Button
+            onPress={() => navigation.navigate("ReviewModal")}
+            title="Add a Review"
+          />
         </View>
       </View>
     </View>
