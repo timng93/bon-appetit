@@ -7,11 +7,13 @@ import AuthLoading from "../../js/components/AuthLoading";
 import Login from "../../js/screens/Login";
 import NavigationLayout from "./NavigationLayout";
 import RecipeModal from "../components/RecipeModal";
+import ReviewModal from "../components/ReviewModal";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
-    RecipeModal: RecipeModal
+    RecipeModal: RecipeModal,
+    ReviewModal: ReviewModal
   },
   {
     mode: "modal",
