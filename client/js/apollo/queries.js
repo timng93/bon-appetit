@@ -12,3 +12,13 @@ export const ALL_RECIPES_QUERY = gql`
     }
   }
 `;
+
+export const GET_REVIEWS_FOR_RECIPE = gql`
+  query GetAllReviews($id: String!) {
+    allReviews(filter: {id: $id}) {
+      id
+      rating
+      comment
+    }
+  }
+`;
