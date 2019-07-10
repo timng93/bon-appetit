@@ -9,12 +9,15 @@ export const ALL_RECIPES_QUERY = gql`
         id
         name
       }
+      reviews{
+        rating
+      }
     }
   }
 `;
 
 export const GET_REVIEWS_FOR_RECIPE = gql`
-  query GetAllReviews($id: String!) {
+  query($id: ID!) {
     allReviews(filter: {id: $id}) {
       id
       rating
