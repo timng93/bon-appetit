@@ -7,7 +7,6 @@ import styles from "./styles";
 const RecipeModal = ({navigation}) => {
   const recipe = navigation.getParam("recipe");
   const image = navigation.getParam("image");
-
   console.log(recipe);
   return (
     <View style={styles.container}>
@@ -18,7 +17,11 @@ const RecipeModal = ({navigation}) => {
           <Image style={styles.image} source={image[recipe.title]} />
           <Text style={styles.title}>{recipe.description}</Text>
           <Button
-            onPress={() => navigation.navigate("ReviewModal")}
+            onPress={() =>
+              navigation.navigate("ReviewModal", {
+                recipeData: recipe
+              })
+            }
             title="Add a Review"
           />
         </View>
