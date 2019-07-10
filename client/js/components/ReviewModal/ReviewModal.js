@@ -4,12 +4,14 @@ import {withNavigation} from "react-navigation";
 import PropTypes from "prop-types";
 import styles from "./styles";
 import StarRating from "react-native-star-rating";
+import {GET_REVIEWS_FOR_RECIPE} from "../../apollo/queries";
 
 class ReviewModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      starCount: 3.5
+      starCount: 3.5,
+      recipeId: null
     };
   }
 
@@ -21,6 +23,9 @@ class ReviewModal extends Component {
 
   render() {
     const {navigation} = this.props;
+    const recipeData = navigation.getParam("recipeData");
+    console.log(recipeData);
+
     return (
       <View>
         <View style={styles.header} />
