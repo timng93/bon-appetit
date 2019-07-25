@@ -9,6 +9,9 @@ export const ALL_RECIPES_QUERY = gql`
         id
         name
       }
+      reviews {
+        rating
+      }
     }
   }
 `;

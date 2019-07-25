@@ -16,6 +16,10 @@ const RecipeModal = ({navigation}) => {
           <Text style={styles.title}>{recipe.title}</Text>
           <Image style={styles.image} source={image[recipe.title]} />
           <Text style={styles.title}>{recipe.description}</Text>
+          <Text style={styles.rating}>Rating: </Text>
+          {recipe.reviews.map(review => (
+            <Text key={review.id}>{review.rating}</Text>
+          ))}
           <Button
             onPress={() =>
               navigation.navigate("ReviewModal", {
