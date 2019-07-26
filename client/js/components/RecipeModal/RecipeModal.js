@@ -7,7 +7,10 @@ import styles from "./styles";
 const RecipeModal = ({navigation}) => {
   const recipe = navigation.getParam("recipe");
   const image = navigation.getParam("image");
-  console.log(recipe);
+  const allRatings = recipe.reviews.map(review => review.rating);
+  const averageRating = allRatings.reduce(
+    (a, b) => (a + b) / allRatings.length
+  );
   return (
     <View style={styles.container}>
       <View style={styles.close}>
@@ -16,6 +19,7 @@ const RecipeModal = ({navigation}) => {
           <Text style={styles.title}>{recipe.title}</Text>
           <Image style={styles.image} source={image[recipe.title]} />
           <Text style={styles.title}>{recipe.description}</Text>
+          <Text style={styles.rating}>Rating: {averageRating}</Text>
           <Button
             onPress={() =>
               navigation.navigate("ReviewModal", {
