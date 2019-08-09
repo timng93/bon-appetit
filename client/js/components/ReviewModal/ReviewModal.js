@@ -4,7 +4,7 @@ import {withNavigation} from "react-navigation";
 import PropTypes from "prop-types";
 import styles from "./styles";
 import StarRating from "react-native-star-rating";
-import {GET_REVIEWS_FOR_RECIPE} from "../../apollo/queries";
+import {ADD_REVIEW} from "../../apollo/queries";
 
 class ReviewModal extends Component {
   constructor(props) {

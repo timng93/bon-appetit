@@ -16,12 +16,11 @@ export const ALL_RECIPES_QUERY = gql`
   }
 `;
 
-export const GET_REVIEWS_FOR_RECIPE = gql`
-  query GetAllReviews($id: String!) {
-    allReviews(filter: {id: $id}) {
+export const ADD_REVIEW = gql`
+  mutation AddReview($id: String!, $rating: Float!) {
+    createReview(id: $id, rating: $rating) {
       id
       rating
-      comment
     }
   }
 `;
