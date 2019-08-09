@@ -23,8 +23,9 @@ class ReviewModal extends Component {
 
   render() {
     const {navigation} = this.props;
+    const {starCount} = this.state;
     const recipeData = navigation.getParam("recipeData");
-    console.log(recipeData);
+    console.log(starCount);
 
     return (
       <View>
